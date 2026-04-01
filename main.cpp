@@ -2,17 +2,17 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <windows.h>
+
 
 #include "Figures.h"
 #include "Circle.h"
 #include "trapezoid.h"
 #include "triangle.h"
-
+#include "Rectangle.h"
 #include "Fish.h"
 #include "Bird.h"
 #include "FlyingBird.h"
-
+#include "Summator.h"
 #include "Human.h"
 #include "Student.h"
 #include "Teacher.h"
@@ -44,32 +44,31 @@ double sumScores(const vector<int>& scores)
 
 void runUniversitySystem()
 {
-    cout << "СИСТЕМА УПРАВЛЕНИЯ УНИВЕРСИТЕТОМ\n" << endl;
+    cout << "UNIVERSITY MANAGEMENT SYSTEM\n" << endl;
 
     vector<Student> students;
-    students.push_back(Student("Иванов", "Иван", "Иванович", {5, 4, 5, 4, 5}));
-    students.push_back(Student("Петров", "Петр", "Петрович", {3, 3, 2, 4, 3}));
-    students.push_back(Student("Сидоров", "Сидор", "Сидорович", {2, 2, 3, 2, 2}));
-    students.push_back(Student("Смирнов", "Алексей", "Алексеевич", {5, 5, 5, 5, 5, 5}));
-    students.push_back(Student("Кузнецов", "Дмитрий", "Дмитриевич", {4, 4, 4, 4, 3}));
-    students.push_back(Student("Попов", "Андрей", "Андреевич", {3, 3, 3, 3, 4}));
-    students.push_back(Student("Васильев", "Василий", "Васильевич", {5, 5, 4, 5, 4, 5, 4}));
-    students.push_back(Student("Зайцев", "Михаил", "Михайлович", {2, 3, 2, 2, 3}));
-    students.push_back(Student("Волков", "Сергей", "Сергеевич", {4, 5, 4, 5, 4, 5}));
-    students.push_back(Student("Медведев", "Денис", "Денисович", {3, 4, 3, 4, 3}));
+    students.push_back(Student("Ivanov", "Ivan", "Ivanovich", {5, 4, 5, 4, 5}));
+    students.push_back(Student("Petrov", "Petr", "Petrovich", {3, 3, 2, 4, 3}));
+    students.push_back(Student("Sidorov", "Sidor", "Sidorovich", {2, 2, 3, 2, 2}));
+    students.push_back(Student("Smirnov", "Alexey", "Alexeevich", {5, 5, 5, 5, 5, 5}));
+    students.push_back(Student("Kuznetsov", "Dmitry", "Dmitrievich", {4, 4, 4, 4, 3}));
+    students.push_back(Student("Popov", "Andrey", "Andreevich", {3, 3, 3, 3, 4}));
+    students.push_back(Student("Vasiliev", "Vasily", "Vasilievich", {5, 5, 4, 5, 4, 5, 4}));
+    students.push_back(Student("Zaitsev", "Mikhail", "Mikhailovich", {2, 3, 2, 2, 3}));
+    students.push_back(Student("Volkov", "Sergey", "Sergeevich", {4, 5, 4, 5, 4, 5}));
+    students.push_back(Student("Medvedev", "Denis", "Denisovich", {3, 4, 3, 4, 3}));
 
     vector<Teacher> teachers;
-    teachers.push_back(Teacher("Иванова", "Мария", "Ивановна", Position::DOCENT, {"ОС", "Базы данных", "Информатика"}));
-    teachers.push_back(Teacher("Петров", "Владимир", "Сергеевич", Position::PROFESSOR, {"Математика", "Физика", "Информатика", "Программирование"}));
-    teachers.push_back(Teacher("Сидорова", "Елена", "Викторовна", Position::ASSISTANT, {"Английский язык"}));
-    teachers.push_back(Teacher("Козлов", "Николай", "Петрович", Position::SENIOR_LECTURER, {"История", "Философия"}));
-    teachers.push_back(Teacher("Морозов", "Александр", "Игоревич", Position::PROFESSOR, {"Физика", "Математика", "Механика", "Термодинамика", "Квантовая физика"}));
-    teachers.push_back(Teacher("Волкова", "Татьяна", "Александровна", Position::DOCENT, {"Программирование", "Алгоритмы", "Структуры данных"}));
-    teachers.push_back(Teacher("Соколов", "Игорь", "Владимирович", Position::DOCENT, {"Информатика", "Компьютерные сети"}));
-    teachers.push_back(Teacher("Михайлов", "Антон", "Павлович", Position::SENIOR_LECTURER, {"Физкультура"}));
-    teachers.push_back(Teacher("Федорова", "Наталья", "Сергеевна", Position::PROFESSOR, {"Химия", "Биология", "Экология"}));
-    teachers.push_back(Teacher("Алексеев", "Виктор", "Николаевич", Position::DOCENT, {"Информатика", "Web-программирование", "JavaScript", "HTML/CSS"}));
-
+    teachers.push_back(Teacher("Ivanova", "Maria", "Ivanovna", Position::DOCENT, {"OS", "Databases", "Computer Science"}));
+    teachers.push_back(Teacher("Petrov", "Vladimir", "Sergeevich", Position::PROFESSOR, {"Mathematics", "Physics", "Computer Science", "Programming"}));
+    teachers.push_back(Teacher("Sidorova", "Elena", "Viktorovna", Position::ASSISTANT, {"English Language"}));
+    teachers.push_back(Teacher("Kozlov", "Nikolai", "Petrovich", Position::SENIOR_LECTURER, {"History", "Philosophy"}));
+    teachers.push_back(Teacher("Morozov", "Alexander", "Igorevich", Position::PROFESSOR, {"Physics", "Mathematics", "Mechanics", "Thermodynamics", "Quantum Physics"}));
+    teachers.push_back(Teacher("Volkova", "Tatiana", "Alexandrovna", Position::DOCENT, {"Programming", "Algorithms", "Data Structures"}));
+    teachers.push_back(Teacher("Sokolov", "Igor", "Vladimirovich", Position::DOCENT, {"Computer Science", "Computer Networks"}));
+    teachers.push_back(Teacher("Mikhailov", "Anton", "Pavlovich", Position::SENIOR_LECTURER, {"Physical Education"}));
+    teachers.push_back(Teacher("Fedorova", "Natalia", "Sergeevna", Position::PROFESSOR, {"Chemistry", "Biology", "Ecology"}));
+    teachers.push_back(Teacher("Alekseev", "Viktor", "Nikolaevich", Position::DOCENT, {"Computer Science", "Web Programming", "JavaScript", "HTML/CSS"}));
 
     ofstream f1("students.txt");
     for (size_t i = 0; i < students.size(); ++i) {
@@ -97,10 +96,9 @@ void runUniversitySystem()
     }
     f2.close();
 
-    cout << "Данные сохранены в файлы\n" << endl;
+    cout << "Data saved to files\n" << endl;
 
-
-    cout << "1) Студенты со средним баллом > 4:" << endl;
+    cout << "1) Students with average score > 4:" << endl;
     for (size_t i = 0; i < students.size(); ++i) {
         const Student& s = students[i];
         double avg = (s.getScores().empty()) ? 0 : sumScores(s.getScores()) / s.getScores().size();
@@ -109,7 +107,7 @@ void runUniversitySystem()
         }
     }
 
-    cout << "\n2) Студенты со средним баллом < 3:" << endl;
+    cout << "\n2) Students with average score < 3:" << endl;
     for (size_t i = 0; i < students.size(); ++i) {
         const Student& s = students[i];
         double avg = (s.getScores().empty()) ? 0 : sumScores(s.getScores()) / s.getScores().size();
@@ -118,7 +116,7 @@ void runUniversitySystem()
         }
     }
 
-    cout << "\n3) Студент с наибольшим количеством оценок:" << endl;
+    cout << "\n3) Student with the most grades:" << endl;
     size_t maxScores = 0;
     int bestStudentIndex = -1;
     for (size_t i = 0; i < students.size(); ++i) {
@@ -139,15 +137,15 @@ void runUniversitySystem()
         cout << " – " << avg << endl;
     }
 
-    cout << "\n4) Доценты:" << endl;
+    cout << "\n4) Docent level teachers:" << endl;
     for (size_t i = 0; i < teachers.size(); ++i) {
         const Teacher& t = teachers[i];
         if (t.getPosition() == Position::DOCENT) {
-            cout << "   " << t.getSurnameAndInitials() << " доцент: " << t.getSubjects().size() << endl;
+            cout << "   " << t.getSurnameAndInitials() << " docent: " << t.getSubjects().size() << endl;
         }
     }
 
-    cout << "\n5) Профессор с наибольшим количеством предметов:" << endl;
+    cout << "\n5) Professor with the most subjects:" << endl;
     size_t maxSubjects = 0;
     int bestProfessorIndex = -1;
     for (size_t i = 0; i < teachers.size(); ++i) {
@@ -159,7 +157,7 @@ void runUniversitySystem()
     }
     if (bestProfessorIndex != -1) {
         const Teacher& t = teachers[bestProfessorIndex];
-        cout << "   " << t.getFullName() << " профессор: ";
+        cout << "   " << t.getFullName() << " professor: ";
         const vector<string>& subjects = t.getSubjects();
         for (size_t j = 0; j < subjects.size(); ++j) {
             cout << subjects[j];
@@ -168,25 +166,25 @@ void runUniversitySystem()
         cout << endl;
     }
 
-    cout << "\n6) Преподаватели, ведущие информатику:" << endl;
+    cout << "\n6) Teachers who teach Computer Science:" << endl;
     for (size_t i = 0; i < teachers.size(); ++i) {
         const Teacher& t = teachers[i];
         const vector<string>& subjects = t.getSubjects();
-        bool teachesInformatics = false;
+        bool teachesCS = false;
         for (size_t j = 0; j < subjects.size(); ++j) {
-            if (subjects[j] == "Информатика") {
-                teachesInformatics = true;
+            if (subjects[j] == "Computer Science") {
+                teachesCS = true;
                 break;
             }
         }
-        if (teachesInformatics) {
+        if (teachesCS) {
             cout << "   " << t.getFullName() << " ";
             switch(t.getPosition()) {
-                case Position::ASSISTANT: cout << "ассистент"; break;
-                case Position::SENIOR_LECTURER: cout << "старший преподаватель"; break;
-                case Position::DOCENT: cout << "доцент"; break;
-                case Position::PROFESSOR: cout << "профессор"; break;
-                default: cout << "Неизвестно";
+                case Position::ASSISTANT: cout << "assistant"; break;
+                case Position::SENIOR_LECTURER: cout << "senior lecturer"; break;
+                case Position::DOCENT: cout << "docent"; break;
+                case Position::PROFESSOR: cout << "professor"; break;
+                default: cout << "Unknown";
             }
             cout << ": ";
             for (size_t j = 0; j < subjects.size(); ++j) {
@@ -196,8 +194,9 @@ void runUniversitySystem()
             cout << endl;
         }
     }
-
 }
+
+
 
 void testEarlyBinding()
 {
@@ -242,7 +241,7 @@ void task1()
         break;
 
     case 4:
-        // c = new Rectangle(3, 4);
+        c = new Rectangle(3, 4);
         break;
     }
 
@@ -253,10 +252,28 @@ void task1()
     delete c;
 }
 
-int main() {
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
+void SummatorStart()
+{
+    Summator s;
+    Summator& ref = s;
 
+    SquareSummator ss;
+    SquareSummator& refs = ss;
+
+    CubeSummator cs;
+    CubeSummator& refc = cs;
+
+
+
+    int N = 5;
+
+    cout << "Summa " << ref.sum(N) << endl;
+    cout << "SquareSumma " << refs.sum(N) << endl;
+    cout << "CubeSumma " << refc.sum(N) << endl;
+
+}
+
+int main() {
     int choice;
 
     do
@@ -272,6 +289,9 @@ int main() {
             break;
         case 3:
             runUniversitySystem();
+            break;
+        case 4:
+            SummatorStart();
             break;
         }
     } while (choice != 0);
